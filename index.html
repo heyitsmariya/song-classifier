@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css')}}">
+    <title>Spotify Classification</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='styles/parallax.min.js')}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</head>
+<div class="parallax-window" data-parallax="scroll" data-image-src="{{url_for('static',filename='images/spotify_header.jpg')}}">
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li style="float:right"><a class="active" href="about">About</a></li>
+    </ul>
+</div>
+
+<style>
+
+
+    .parallax-window {
+        min-height: 500px;
+        background: transparent;
+    }
+</style>
+
+
+<body>
+
+    <div class="explaination">
+        <h2 class="abouth3"> About This Platform</h2>
+        <p class="info">
+            This platform is aimed to predict Album Type of a song based on their attributes.
+            Spotify is a popular music streaming platform that allows users to access a vast library of music, podcasts,
+                and other audio content from around the world. 
+            The platform uses algorithms and personalized recommendations to suggest music and playlists based 
+            on users' listening habits and preferences.
+            The data used to aid the algorithm has been taken from the Kaggle. For more information
+            on the data attributes associated with our calculation,
+            <a class="colorthisa" href="https://www.kaggle.com/datasets/salvatorerastelli/spotify-and-youtube">Click Here.</a>
+        </p>
+    </div>
+
+
+    <h3>Spotify Song Classification Platform</h3>
+
+
+    <!-- Form -->
+    <div class="complete_form">
+        <form action="/send" method="POST" id="myForm">
+
+            <div class="container1">
+                <label for="danceability">Danceability (from 0.0 to 1.0) </label>
+                <input type="number" step ="0.001" min = "0" max = "1" required
+                       placeholder="Enter Danceability..."
+                       name="danceability" />
+
+                <label for="energy">Energy (from 0.0 to 1.0)</label>
+                <input type="number" step ="0.001" min = "0" max = "1" required
+                       placeholder="Enter Energy..."
+                       name="energy" />
+
+                <label for="key">Key (from 0 to 12)</label>
+                <input type="number" step ="1" min = "0" max = "12" required
+                        placeholder="Enter Key..."
+                        name="key" />
+
+                <label for="loudness">Loudness (from -60.0 to 0 decibels)</label>
+                <input type="number" step ="0.001" min = "-60.00" max = "0.00" required
+                       placeholder="Enter Loudness..."
+                       name="loudness" />
+
+                <label for="acousticness">Acousticness (from 0.0 to 1.0)</label>
+                <input type="number" step ="0.001" min = "0" max = "1" required
+                       placeholder="Enter Acousticness..."
+                       name="acousticness" />                       
+
+                <label for="instrumentalness">Instrumentalness (from 0.0 to 1.0)</label>
+                <input type="number" step ="0.001" min = "0" max = "1" required
+                       placeholder="Enter Instrumentalness..."
+                       name="instrumentalness" />
+
+                       
+                <label for="valence">Valence (from 0.0 to 1.0)</label>
+                <input type="number" step ="0.001" min = "0" max = "1"" required
+                       placeholder="Enter Valence..."
+                       name="valence" />
+
+                <input type="submit" value="Predict" id="calc_btn" />
+
+            </div>
+            <div class="alert">
+                {{ predict }}
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+<footer>
+    <p>© 2023 - University of Canberra ST1G_Capstone - Project. All Rights Reserved.
+</footer>
+</html>
